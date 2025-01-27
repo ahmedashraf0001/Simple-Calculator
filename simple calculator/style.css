@@ -1,0 +1,178 @@
+:root {
+    --color-background: rgb(27, 27, 27);
+    --color-display: rgb(48, 47, 47);
+    --color-operator: rgb(255, 132, 0);
+    --color-operator-hover: rgb(192, 99, 0);
+    --color-number: rgb(65, 65, 65);
+    --color-number-hover: rgb(41, 41, 41);
+    --color-function: rgb(200, 198, 198);
+    --color-function-hover: rgb(255, 255, 255);
+    --color-text: white;
+    --color-border: rgb(84, 84, 84);
+
+    --border-radius-large: 20px;
+    --border-radius-medium: 10px;
+    --border-radius-small: 60px;
+
+    --padding-small: 10px;
+    --padding-medium: 12px;
+
+    --margin-small: 10px;
+    --margin-medium: 12px;
+    --margin-large: 20px;
+
+    --gap-small: 10px;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.calculator-container {
+    display: flex;
+    flex-direction: column;
+    width: 310px;
+    height: 500px;
+    border-radius: var(--border-radius-large);
+    background-color: var(--color-background);
+}
+
+.calc-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-display);
+    color: var(--color-text);
+    font-size: 65px;
+    margin: 0 var(--margin-medium);
+    margin-top: var(--margin-large);
+    margin-bottom: var(--margin-small);
+    border-radius: var(--border-radius-medium);
+    padding: var(--padding-small);
+    height: 74px;
+    user-select: none;
+}
+
+.calc-display:active {
+    cursor: grabbing;
+}
+
+#info {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    text-align: left;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+    scrollbar-width: thin; 
+    scrollbar-color: white transparent;
+    position: relative;
+}
+
+#info::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    margin-left: 2px;
+    width: 2px; 
+    height: 1em; 
+    background-color: var(--color-text);
+    animation: smooth-blink 1.2s infinite;
+    transform-origin: center;
+    opacity: 0.75;
+}
+
+@keyframes smooth-blink {
+    0%, 100% {
+        opacity: 0.75;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+.calc-controls {
+    display: flex;
+    flex-direction: row;
+    direction: rtl;
+    gap: var(--gap-small);
+}
+
+button {
+    border: none;
+    border-radius: var(--border-radius-small);
+    color: var(--color-text);
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    padding: var(--padding-small);
+    height: 60px;
+    width: 60px;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.op-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap-small);
+    margin: var(--margin-medium);
+}
+
+.num-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-small);
+    height: fit-content;
+    margin: var(--margin-medium) 0;
+}
+
+.alt-btns {
+    background-color: var(--color-function);
+    color: var(--color-display);
+    border: 2px solid transparent;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 23px;
+    width: 60px;
+    transition: background-color 0.1s, border 0.05s;
+}
+
+.alt-btns:hover {
+    background-color: var(--color-function-hover);
+    border: 3px solid var(--color-border);
+}
+
+.num-btns {
+    background-color: var(--color-number);
+    border: 2px solid transparent;
+    transition: background-color 0.1s, border 0.05s;
+}
+
+.num-btns:hover {
+    background-color: var(--color-number-hover);
+    border: 2px solid var(--color-text);
+}
+
+.op-btns {
+    background-color: var(--color-operator);
+    border: 2px solid transparent;
+    transition: background-color 0.1s, border 0.05s;
+}
+
+.op-btns:hover {
+    background-color: var(--color-operator-hover);
+    border: 2px solid var(--color-text);
+}
+
+#zero {
+    width: 60%;
+    border-radius: calc(var(--border-radius-small) / 2);
+    text-align: end;
+    padding-left: 25px;
+}
